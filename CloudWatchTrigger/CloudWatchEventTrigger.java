@@ -19,14 +19,14 @@ public class CloudWatchEvent {
                 .withDescription(description);
         cloudWatchEvents.putRule(putRuleRequest);
 
-//        // add permission to Lambda function
-//        AWSLambdaClientBuilder builder = AWSLambdaClientBuilder.standard();
-//        builder.build().addPermission(new AddPermissionRequest()
-//                .withFunctionName(functionName)
-//                .withStatementId(ruleName)
-//                .withAction("lambda:InvokeFunction")
-//                .withPrincipal("events.amazonaws.com")
-//                .withSourceArn("arn:aws:events:REGION:ACCOUNT-ID:rule/" + ruleName));
+        // add permission to Lambda function
+        AWSLambdaClientBuilder builder = AWSLambdaClientBuilder.standard();
+        builder.build().addPermission(new AddPermissionRequest()
+                .withFunctionName(functionName)
+                .withStatementId(ruleName)
+                .withAction("lambda:InvokeFunction")
+                .withPrincipal("events.amazonaws.com")
+                .withSourceArn("arn:aws:events:REGION:ACCOUNT-ID:rule/" + ruleName));
 
         // create CloudWatch Event target
         PutTargetsRequest putTargetsRequest = new PutTargetsRequest()
